@@ -17,7 +17,7 @@ router.get('/:resource', (req, res) => {
 /*  */
 
 router.post('/signup', function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     turbo
         .create('user', req.body)
         .then(data => {
@@ -34,8 +34,27 @@ router.post('/signup', function (req, res) {
         });
 });
 
+router.post('/login', function (req, res) {
+    // console.log(req.body);
+    turbo
+        .login(req.body)
+        .then(data => {
+            res.json({
+                confirmation: 'success',
+                data: data
+            });
+        })
+        .catch(err => {
+            res.json({
+                confirmation: 'fail',
+                message: err.message
+            });
+        });
+});
 
-router.post('/signup', (req, res) => {
+
+
+router.post('/post', (req, res) => {
     res.json({
         confirmation: 'success',
         resource: req.params.resource,
