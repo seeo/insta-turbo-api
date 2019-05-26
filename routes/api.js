@@ -15,6 +15,26 @@ router.get('/:resource', (req, res) => {
 
 /* tested that the route works, able to render JSON with POST method */
 /*  */
+
+router.post('/signup', function (req, res) {
+    console.log(req.body);
+    turbo
+        .create('user', req.body)
+        .then(data => {
+            res.json({
+                confirmation: 'success',
+                data: data
+            });
+        })
+        .catch(err => {
+            res.json({
+                confirmation: 'fail',
+                message: err.message
+            });
+        });
+});
+
+
 router.post('/signup', (req, res) => {
     res.json({
         confirmation: 'success',
