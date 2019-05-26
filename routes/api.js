@@ -52,15 +52,11 @@ router.post('/login', function (req, res) {
         });
 });
 
-router.get('/users/:id/photo', (req, res) => {
-    console.log(req.params.id);
-    console.log(req);
-    res.json({
-        confirmation: 'success',
-        resource: req.params.resource,
-        query: req.query // from the url query string
-    })
-})
+router.post('/users/:id/photo', (req, res) => {
+    // const userId = req.params.id;
+    // console.log("req.params", req.params.user.data);
+    console.log("userId", req.params.id);
+});
 
 router.post('/post', (req, res) => {
     res.json({
